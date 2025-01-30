@@ -1,26 +1,33 @@
-NAME = push_swp.a
+NAME = push_swap
+
+LIBFT = libft/libft.a
 
 CC = cc
 
-CFLAGS = gcc -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-SRC =
+SRC = push_swap.c parsing_input.c
 
 OBJ = $(SRC:.c=.o)
 
 AR = ar -rc
 
-RM = rm - rf
+RM = rm -rf
 
-all : $(NAME)
+all : $(LIBFT) $(NAME)
 
-$(NAME) : $(OBJ)
-	$(AR) $(NAME)
+$(NAME) : $(OBJ) push_swap.h
+	$(CC) $(OBJ) $(LIBFT) -o $(NAME)  
+
+$(LIBFT) :
+	make -C libft
 
 clean :
+	make -C libft clean
 	$(RM) $(OBJ)
 
 fclean : clean
+	make -C libft fclean
 	$(RM) $(NAME)
 
 re : fclean all
