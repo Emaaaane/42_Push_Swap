@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 
-int is_duplicated(int number)
+void is_duplicated(t_stack stack, int number)
 {
     int i;
     

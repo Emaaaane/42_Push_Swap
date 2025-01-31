@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-t_stack *new_list(int value)
+t_stack *new_list(int va lue)
 {
     t_stack *new_list;
     new_list = malloc(sizeof(t_stack));

@@ -38,10 +38,15 @@ int validate_number(char *str)
     return(1);
 }
 
-void *parsing_input(char **arr)
+int *parsing_input(char **arr, int size)
 {
     //t_stack **stack = NULL;
     int i;
+    int *numbers;
+    numbers = malloc(sizeof int * size);
+    
+    if(!numbers)
+        return(NUlL);
     i = 0;
     while(arr[i])
     {
@@ -50,12 +55,13 @@ void *parsing_input(char **arr)
             write(2, "Error\n", 6);
             exit(0);
         }
-        // if(!arr[0])
-        // {
-        //     write(2, "Error\n", 6);
-        //     exit(0);
-        // }
+        numbers[i] = ft_atoi(arr[i]); 
+        if(numbers > INT_MAX || numbers < INT_MIN)
+        {   
+            write(2, "Error\n", 6);
+            exit(0);
+        }
         i++;
     }
-    return(arr);
+    return(numbers);
 }
